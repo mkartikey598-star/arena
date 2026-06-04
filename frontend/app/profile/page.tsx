@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
-const BACKEND = "http://localhost:8080"
-
+const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8080"
 interface Stats {
   username: string
   games_played: number

@@ -95,7 +95,10 @@ export default function RoomPage() {
     let cancelled = false
 
     const connect = () => {
-      ws = new WebSocket(`ws://localhost:8080/ws/${id}`)
+      const wsUrl = (process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8080")
+  .replace("https://", "wss://")
+  .replace("http://", "ws://")
+ws = new WebSocket(`${wsUrl}/ws/${id}`)
 
       ws.onopen = () => {
         if (!cancelled) setConnected(true)

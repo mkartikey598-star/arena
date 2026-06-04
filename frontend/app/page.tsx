@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"
 type Panel = "idle" | "join"
 type JoinStatus = "idle" | "checking" | "not_found" | "full" | "error"
 
-const BACKEND = "http://localhost:8080"
+const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8080"
 
 export default function Home() {
   const router = useRouter()
