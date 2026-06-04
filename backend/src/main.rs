@@ -384,7 +384,12 @@ async fn main() {
     dotenvy::dotenv().ok();
     let db_url = std::env::var("DATABASE_URL")
         .unwrap_or("postgresql://localhost/arena".into());
-    let db = PgPool::connect(&db_url).await.unwrap();
+    let db = sqlx::postgres::PgPoolOptions::new()
+    .max_connections(5)
+    .acquire_timeout(Duration::from_secs(30))
+    .connect(&db_url)
+    .await
+    .expect(&format!("Failed to connect to database: {}", db_url));
     let state = AppState {
         rooms: Arc::new(RwLock::new(HashMap::new())),
         questions: Arc::new(build_question_bank()),
