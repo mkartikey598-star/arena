@@ -381,7 +381,7 @@ fn compute_score(tests_passed: u32, tests_total: u32, solve_time_secs: u64) -> f
 
 #[tokio::main]
 async fn main() {
-    dotenvy::dotenv().ok();
+    
     let db_url = std::env::var("DATABASE_URL")
         .unwrap_or("postgresql://localhost/arena".into());
     let db = sqlx::postgres::PgPoolOptions::new()
