@@ -184,10 +184,10 @@ ws = new WebSocket(`${wsUrl}/ws/${id}`)
     setRunning(true)
     setOutput(["running..."])
     try {
-      const res = await fetch("http://localhost:8080/execute", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code: myCode, language }),
+      const res = await fetch(`${BACKEND}/execute`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ code: myCode, language }),
       })
       const data = await res.json()
       if (data.stdout) setOutput(data.stdout.split("\n").filter(Boolean))
@@ -204,7 +204,7 @@ ws = new WebSocket(`${wsUrl}/ws/${id}`)
     setSubmitting(true)
     setOutput(["Judging against test cases..."])
     try {
-      const res = await fetch("http://localhost:8080/submit", {
+      const res = await fetch(`${BACKEND}/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
