@@ -48,19 +48,21 @@ A real-time multiplayer coding platform where two players compete head-to-head t
 
 ## Architecture
 
-Browser (Player 1)          Browser (Player 2)
-|                           |
-|-------- WebSocket --------|
-|
-Rust/Axum Server
-|
-Tokio Broadcast Channel
-(game state, ticks, scores)
-|
-PostgreSQL DB
-|
-Docker Containers
-(isolated code execution)
+## Architecture
+
+```mermaid
+graph TD
+    P1[Player 1 Browser] -->|WebSocket| S[Rust/Axum Server]
+    P2[Player 2 Browser] -->|WebSocket| S
+
+    S -->|Broadcast game state| P1
+    S -->|Broadcast game state| P2
+
+    S -->|Persist users & matches| DB[(PostgreSQL)]
+    S -->|Spawn per submission| D1[Docker Container\nPython/JS/C++/Java/Rust/Go/TS]
+
+    D1 -->|stdout result| S
+```
 ---
 
 ## Run Locally
