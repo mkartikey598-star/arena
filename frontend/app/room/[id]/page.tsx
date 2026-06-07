@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useRef, useState, useCallback } from "react"
 import Editor from "@monaco-editor/react"
 import { useParams } from "next/navigation"
@@ -7,7 +6,6 @@ const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8080"
 type Difficulty = "easy" | "medium" | "hard"
 
 interface Example { input: string; output: string }
-
 interface Question {
   id: number
   title: string
