@@ -11,8 +11,8 @@ A real-time multiplayer coding platform where two players compete head-to-head t
 1. Player 1 creates a room and shares the invite link
 2. Player 2 joins the room
 3. Both players get the same coding problem simultaneously
-4. 10-minute countdown begins — solve it faster and with more test cases passing to win
-5. Code is executed in isolated Docker containers in real-time
+4. 10-minute countdown begins  solve it faster and with more test cases passing to win
+5. Code is executed in isolated Docker containers in real time
 6. Winner determined by accuracy + solve time score
 
 ---
