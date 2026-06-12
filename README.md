@@ -46,7 +46,7 @@ A real-time multiplayer coding platform where two players compete head-to-head t
 
 ---
 
-## Architecture
+
 
 ## Architecture
 
